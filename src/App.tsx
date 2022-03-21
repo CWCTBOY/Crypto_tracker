@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+//React
+import { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+//styles
 import './reset.css';
-
-const Container = styled.div`
-  background-color: ${props => props.theme.bgColor};
-  width: 100vw;
-  height: 100vh;
-`;
-const H1 = styled.h1`
-  color: ${props => props.theme.txtColor};
-`;
+//components
+import Home from './routes/Home';
 
 function App() {
   return (
-    <Container>
-      <H1>hi</H1>
-    </Container>
+    <Router>
+      <Switch>
+        <Route path='/' component={Home} />
+      </Switch>
+    </Router>
   );
 }
 
