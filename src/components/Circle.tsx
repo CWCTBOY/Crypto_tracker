@@ -1,22 +1,20 @@
 import styled from 'styled-components';
 
-interface ContainerProps {
+interface CircleProps {
   bgColor: string;
+  borderColor?: string;
 }
-
-const Container = styled.div<ContainerProps>`
+const Container = styled.div<CircleProps>`
   width: 300px;
   height: 300px;
   background-color: ${props => props.bgColor};
+  border: ${props => props.borderColor} 10px solid;
 `;
 
-interface CircleProps {
-  bgColor: string;
-}
 
 function Circle(props: CircleProps) {
   return (
-    <Container bgColor={props.bgColor} />
+    <Container bgColor={props.bgColor} borderColor={props.borderColor ?? props.bgColor} />
   )
 }
 
