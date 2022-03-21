@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import Circle from './components/Circle';
 
 function App() {
   return (
-    null
+    <div>
+      <Circle bgColor='teal' />
+      <Circle bgColor='tomato' />
+    </div>
   );
 }
 
