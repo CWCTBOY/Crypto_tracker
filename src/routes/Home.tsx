@@ -18,6 +18,9 @@ const Title = styled.h1`
   color: ${props => props.theme.accentColor};
   font-size:  35px;
 `;
+const Loader = styled.h2`
+  font-size: 20px;
+`;
 const CoinList = styled.ul`
   max-width: 480px;
   height: auto;
@@ -25,12 +28,14 @@ const CoinList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 const Coin = styled.li`
   color: ${props => props.theme.bgColor};
   background-color: ${props => props.theme.txtColor};
-  width: 200px;
+  width: auto;
+  display: flex;
+  align-items: center;
   margin: 5px;
   padding: 10px;
   border-radius: 5px;
@@ -54,10 +59,12 @@ interface CoinData {
 
 function Home() {
   const [coindata, setCoindata] = useState<CoinData[]>([]);
+  const [load, setLoad] = useState<boolean>(true);
   useEffect(() => {
     (async () => {
       const coins = await (await fetch('https://api.coinpaprika.com/v1/coins')).json();
       setCoindata(coins.slice(0, 50));
+      setLoad(false);
     })();
   }, [])
   return (
@@ -67,7 +74,21 @@ function Home() {
       </Link>
       <CoinList>
         {
-          coindata.map(coin => <Link to={`/${coin.name}`}><Coin key={coin.id}>{coin.name} &rarr; {coin.symbol}</Coin></Link>)
+          load
+            ? <Loader>Loading...</Loader>
+            : coindata.map(coin =>
+              <Link to={{
+                pathname: `/${coin.name}`,
+                state: {
+                  name: coin.name
+                }
+              }}>
+                <Coin key={coin.id}>
+                  <img src={`https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${coin.name.toLowerCase().split(" ").join("-")}.png`} style={{ margin: '0 5px 0 0' }} />
+                  {coin.name} &rarr; {coin.symbol}
+                </Coin>
+              </Link>
+            )
         }
       </CoinList>
     </Container >

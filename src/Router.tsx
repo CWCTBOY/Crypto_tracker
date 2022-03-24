@@ -7,13 +7,13 @@ import {
 } from 'react-router-dom';
 //components
 import Home from './routes/Home';
-import Coin from './routes/Coin';
+import CoinPage from './routes/Coin';
 
 function BrowserRouters() {
   return (
     <Router>
       <Switch>
-        <Route path='/:coinId' component={Coin} />
+        <Route path='/:coinId' component={CoinPage} />
         <Route path="/" component={Home} />
       </Switch>
     </Router >
