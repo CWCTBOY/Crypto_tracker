@@ -1,4 +1,4 @@
-import BrowserRouter from './Router';
+import BrowserRouters from './Router';
 import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Poppins:wght@200&display=swap');
@@ -48,7 +48,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <BrowserRouter />
+      <BrowserRouters />
     </>
   )
 }

@@ -70,7 +70,7 @@ function CoinPage() {
   const { state } = useLocation<State>();
   return (
     <Container>
-      <Header><Title>{state?.name || `Loading...`} Tracker</Title></Header>
+      <Header><Title>Coin Tracker</Title></Header>
       {
         load
           ? <Loader>Loading...</Loader>
