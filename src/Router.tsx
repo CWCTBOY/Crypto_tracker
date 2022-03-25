@@ -1,5 +1,4 @@
-//React
-import { useState, useEffect } from 'react';
+//Router
 import {
   BrowserRouter as Router,
   Route,
@@ -7,7 +6,7 @@ import {
 } from 'react-router-dom';
 //components
 import Home from './routes/Home';
-import CoinPage from './routes/Coin';
+import CoinPage from './routes/CoinPage';
 
 function BrowserRouters() {
   return (

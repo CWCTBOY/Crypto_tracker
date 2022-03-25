@@ -17,7 +17,15 @@ const Title = styled.h1`
   font-size:  35px;
 `;
 const Loader = styled.h2`
-  font-size: 20px;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  background-color: rgba(0,0,0,0.4);
+  color: ${props => props.theme.bgColor};
+  border-radius: 30px;
 `;
 const CoinList = styled.ul`
   max-width: 480px;
