@@ -19,9 +19,13 @@ function Home() {
   }, [])
   return (
     <Container>
-      <Link to={'/'}>
-        <Header><Title>Coin Tracker</Title></Header>
-      </Link>
+      <Header>
+        <Link to={{
+          pathname: '/',
+        }}>
+          <Title>Coin Tracker</Title>
+        </Link>
+      </Header>
       <CoinList>
         {
           load
