@@ -1,75 +1,14 @@
-//React
+//Reacts
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-//styles
-import styled from 'styled-components';
-//components
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  box-sizing: border-box;
-  padding: 15px;
-`;
-const Header = styled.header`
-  height: 10vh;
-`;
-const Title = styled.h1`
-  color: ${props => props.theme.accentColor};
-  font-size:  35px;
-`;
-const Loader = styled.h2`
-  width: 110px;
-  height: 110px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 17px;
-  background-color: rgba(0,0,0,0.4);
-  color: ${props => props.theme.bgColor};
-  border-radius: 30px;
-  margin-top: 200px;
-`;
-const CoinList = styled.ul`
-  max-width: 480px;
-  height: auto;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-const Coin = styled.li`
-  color: ${props => props.theme.txtColor};
-  background-color: ${props => props.theme.bgColor};
-  border: 1px solid ${props => props.theme.txtColor};
-  width: 300px;
-  display: flex;
-  align-items: center;
-  margin: 5px;
-  padding: 20px 0 20px 10px;
-  border-radius: 5px;
-  font-size: 17px;
-  transition: all 0.3s ease;
-  &:hover {
-      color: ${props => props.theme.bgColor};
-      background-color: ${props => props.theme.btnColor};
-      transform: translateX(25px);
-  }
-`;
-
-interface CoinData {
-  id: string;
-  name: string;
-  symbol: string;
-  rank: number;
-  is_new: boolean;
-  is_active: boolean;
-  type: string;
-}
+//Interfaces
+import { ICoinData } from '../interfaces/HomeInterface';
+//Styles
+import { Container, Header, Title, Loader, CoinList, Coin } from '../styles/HomeStyle';
+//Components
 
 function Home() {
-  const [coindata, setCoindata] = useState<CoinData[]>([]);
+  const [coindata, setCoindata] = useState<ICoinData[]>([]);
   const [load, setLoad] = useState<boolean>(true);
   useEffect(() => {
     (async () => {

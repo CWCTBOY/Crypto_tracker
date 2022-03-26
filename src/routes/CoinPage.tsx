@@ -1,72 +1,24 @@
-//React
+//Reacts
 import { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
-import { LocationState, CoinData, CoinIdType } from '../interfaces/CoinPageInterface';
-//styled
-import styled from 'styled-components';
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  box-sizing: border-box;
-  padding: 15px;
-`;
-const Header = styled.header`
-  height: 10vh;
-`;
-const Title = styled.h1`
-  color: ${props => props.theme.accentColor};
-  font-size:  35px;
-`;
-const Loader = styled.h2`
-  width: 110px;
-  height: 110px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 17px;
-  background-color: rgba(0,0,0,0.4);
-  color: ${props => props.theme.bgColor};
-  border-radius: 30px;
-`;
-const CoinList = styled.ul`
-  max-width: 480px;
-  height: auto;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-`;
-const Coin = styled.li`
-  color: ${props => props.theme.bgColor};
-  background-color: ${props => props.theme.txtColor};
-  width: auto;
-  display: flex;
-  align-items: center;
-  margin: 5px;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 17px;
-  transition: all 0.3s ease;
-  &:hover {
-      color: ${props => props.theme.txtColor};
-      background-color: ${props => props.theme.btnColor};
-  }
-`;
+import { ILocationState, ICoinIdType } from '../interfaces/CoinPageInterface';
+//Styles
+import { Container, Header, Title, Loader, CoinList, Coin } from '../styles/HomeStyle';
+
 function CoinPage() {
   const [infodata, setInfodata] = useState({});
   const [pricedata, setPricedata] = useState({});
   const [load, setLoad] = useState<boolean>(true);
-  const { state: { name } } = useLocation<LocationState>();
-  const { coinId } = useParams<CoinIdType>();
+  const { state: { name } } = useLocation<ILocationState>();
+  const { coinId } = useParams<ICoinIdType>();
   useEffect(() => {
     (async () => {
       const infoData = await (await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)).json();
+      const priceData = await (await fetch(`https://api.coinpaprika.com/v1/trickers/${coinId}`)).json();
       setInfodata(infoData);
-    })();
-    (async () => {
-      const priceData = await (await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)).json();
       setPricedata(priceData);
+      console.log(infodata);
+      console.log(pricedata);
     })();
   }, [])
   return (
