@@ -1,6 +1,7 @@
 //React
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
+import { LocationState, CoinData, CoinIdType } from '../interfaces/CoinPageInterface';
 //styled
 import styled from 'styled-components';
 const Container = styled.div`
@@ -52,22 +53,22 @@ const Coin = styled.li`
       background-color: ${props => props.theme.btnColor};
   }
 `;
-interface CoinData {
-  id: string;
-  name: string;
-  symbol: string;
-  rank: number;
-  is_new: boolean;
-  is_active: boolean;
-  type: string;
-}
-interface State {
-  name: string;
-}
 function CoinPage() {
-  const [coindata, setCoindata] = useState<CoinData[]>([]);
+  const [infodata, setInfodata] = useState({});
+  const [pricedata, setPricedata] = useState({});
   const [load, setLoad] = useState<boolean>(true);
-  const { state } = useLocation<State>();
+  const { state: { name } } = useLocation<LocationState>();
+  const { coinId } = useParams<CoinIdType>();
+  useEffect(() => {
+    (async () => {
+      const infoData = await (await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)).json();
+      setInfodata(infoData);
+    })();
+    (async () => {
+      const priceData = await (await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)).json();
+      setPricedata(priceData);
+    })();
+  }, [])
   return (
     <Container>
       <Header><Title>Coin Tracker</Title></Header>

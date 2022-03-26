@@ -89,10 +89,10 @@ function Home() {
             ? <Loader>Loading...</Loader>
             : coindata.map(coin =>
               <Link to={{
-                pathname: `/${coin.name}`,
+                pathname: `/${coin.id}`,
                 state: {
                   name: coin.name
-                }
+                }//코인페이지에서 타이틀로 사용예정
               }}>
                 <Coin key={coin.id}>
                   <img src={`https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${coin.name.toLowerCase().split(" ").join("-")}.png`} style={{ margin: '0 5px 0 0' }} />
