@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { ICoinIdType, IInfoData, IPriceData } from '../interfaces/CoinPageInterface';
 //Styles
 import { Overview, OverviewList, Item } from '../styles/OverviewStyle';
+import { Title } from '../styles/HomeStyle';
 import { Loader } from '../styles/HomeStyle';
 
 export function OverviewItem() {
@@ -23,6 +24,7 @@ export function OverviewItem() {
   }, [])
   return (
     <Overview>
+      <Title as={`h2`}> <img src={`https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${infodata?.name.toLowerCase().split(" ").join("-")}.png`} style={{ margin: '0 5px 0 0' }} />{infodata?.symbol}</Title>
       {
         load
           ? <Loader>Loading...</Loader>
@@ -42,7 +44,7 @@ export function OverviewItem() {
                   <span>{infodata?.started_at.slice(0, 4)}</span>
                 </Item>
               </OverviewList>
-              <p>{infodata?.description}</p>
+              <p>{`${infodata?.description.slice(0, 200)}...`}</p>
               <OverviewList>
                 <Item>
                   <span>circ_supp :</span>

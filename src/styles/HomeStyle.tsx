@@ -11,6 +11,8 @@ export const Header = styled.header`
 export const Title = styled.h1`
   color: ${props => props.theme.accentColor};
   font-size:  35px;
+  display: flex;
+  align-items: center;
 `;
 export const Loader = styled.h2`
   width: 110px;
