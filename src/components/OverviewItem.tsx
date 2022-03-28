@@ -2,21 +2,20 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 //Interfaces
-import { ICoinIdType, IInfoData, IPriceData } from '../interfaces/CoinPageInterface';
+import { IInfoData, IPriceData, ICoinIdType } from '../interfaces/CoinPageInterface';
 //Styles
 import { Overview, OverviewList, Item } from '../styles/OverviewStyle';
 import { Title } from '../styles/HomeStyle';
 import { Loader } from '../styles/HomeStyle';
 
-export function OverviewItem() {
+export function OverviewItem(props: ICoinIdType) {
   const [infodata, setInfodata] = useState<IInfoData>();
   const [pricedata, setPricedata] = useState<IPriceData>();
   const [load, setLoad] = useState(true);
-  const { coinId } = useParams<ICoinIdType>();
   useEffect(() => {
     (async () => {
-      const infoData = await (await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)).json();
-      const priceData = await (await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)).json();
+      const infoData = await (await fetch(`https://api.coinpaprika.com/v1/coins/${props.coinId}`)).json();
+      const priceData = await (await fetch(`https://api.coinpaprika.com/v1/tickers/${props.coinId}`)).json();
       setInfodata(infoData);
       setPricedata(priceData);
       setLoad(false);
@@ -32,7 +31,7 @@ export function OverviewItem() {
             <>
               <OverviewList>
                 <Item>
-                  <span>Rank :</span>
+                  <span>Ran k :</span>
                   <span>{infodata?.rank}</span>
                 </Item>
                 <Item>

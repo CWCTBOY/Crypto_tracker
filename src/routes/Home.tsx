@@ -7,7 +7,7 @@ import { ICoinData } from '../interfaces/HomeInterface';
 import { Container, Header, Title, Loader, CoinList, Coin } from '../styles/HomeStyle';
 //Components
 
-function Home() {
+export default function Home() {
   const [coindata, setCoindata] = useState<ICoinData[]>([]);
   const [load, setLoad] = useState<boolean>(true);
   useEffect(() => {
@@ -48,4 +48,3 @@ function Home() {
     </Container >
   )
 }
-export default Home;
