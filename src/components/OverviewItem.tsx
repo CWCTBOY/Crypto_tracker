@@ -1,14 +1,18 @@
 //Reacts
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, Switch, Route } from 'react-router-dom';
 //Interfaces
-import { IInfoData, IPriceData, ICoinIdType } from '../interfaces/CoinPageInterface';
+import { IInfoData, IPriceData, ICoinIdType, ILocationState } from '../interfaces/CoinPageInterface';
 //Styles
 import { Overview, OverviewList, Item } from '../styles/OverviewStyle';
 import { Title } from '../styles/HomeStyle';
 import { Loader } from '../styles/HomeStyle';
+//components
+import Price from '../routes/Price';
+import Chart from '../routes/Chart';
 
 export function OverviewItem(props: ICoinIdType) {
+  const { state: { name } } = useLocation<ILocationState>();
   const [infodata, setInfodata] = useState<IInfoData>();
   const [pricedata, setPricedata] = useState<IPriceData>();
   const [load, setLoad] = useState(true);
@@ -23,7 +27,7 @@ export function OverviewItem(props: ICoinIdType) {
   }, [])
   return (
     <Overview>
-      <Title as={`h2`}> <img src={`https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${infodata?.name.toLowerCase().split(" ").join("-")}.png`} style={{ margin: '0 5px 0 0' }} />{infodata?.symbol}</Title>
+      <Title as={`h2`}> <img src={`https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${infodata?.name.toLowerCase().split(" ").join("-")}.png`} style={{ margin: '0 5px 0 0' }} />{name}</Title>
       {
         load
           ? <Loader>Loading...</Loader>
@@ -31,7 +35,7 @@ export function OverviewItem(props: ICoinIdType) {
             <>
               <OverviewList>
                 <Item>
-                  <span>Ran k :</span>
+                  <span>Rank :</span>
                   <span>{infodata?.rank}</span>
                 </Item>
                 <Item>
@@ -54,6 +58,10 @@ export function OverviewItem(props: ICoinIdType) {
                   <span>{pricedata?.quotes.USD.price.toString().slice(0, 12)}</span>
                 </Item>
               </OverviewList>
+              <Switch>
+                <Route path={`/${props.coinId}/price`} component={Price} />
+                <Route path={`/${props.coinId}/chart`} component={Chart} />
+              </Switch>
             </>
           )
       }
