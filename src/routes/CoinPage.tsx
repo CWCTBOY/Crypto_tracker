@@ -2,12 +2,10 @@
 import { Container, Header, Title } from '../styles/HomeStyle';
 //Reacts
 import { useParams, Link } from 'react-router-dom';
-//Interfaces
-import { ICoinIdType } from '../interfaces/CoinPageInterface';
+//Components
 import { OverviewItem } from '../components/OverviewItem';
 
 export default function CoinPage() {
-  const { coinId } = useParams<ICoinIdType>();
   return (
     <Container>
       <Header>
@@ -18,7 +16,7 @@ export default function CoinPage() {
           <Title>Coin Tracker</Title>
         </Link>
       </Header>
-      <OverviewItem coinId={coinId} />
+      <OverviewItem />
     </Container >
   )
 }

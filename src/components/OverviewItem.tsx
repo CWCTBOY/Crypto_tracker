@@ -1,6 +1,6 @@
 //Reacts
 import { useEffect, useState } from 'react';
-import { useLocation, Switch, Route } from 'react-router-dom';
+import { useLocation, Switch, Route, useParams } from 'react-router-dom';
 //Interfaces
 import { IInfoData, IPriceData, ICoinIdType, ILocationState } from '../interfaces/CoinPageInterface';
 //Styles
@@ -11,15 +11,16 @@ import { Loader } from '../styles/HomeStyle';
 import Price from '../routes/Price';
 import Chart from '../routes/Chart';
 
-export function OverviewItem(props: ICoinIdType) {
+export function OverviewItem() {
+  const { coinId } = useParams<ICoinIdType>();
   const { state: { name } } = useLocation<ILocationState>();
   const [infodata, setInfodata] = useState<IInfoData>();
   const [pricedata, setPricedata] = useState<IPriceData>();
   const [load, setLoad] = useState(true);
   useEffect(() => {
     (async () => {
-      const infoData = await (await fetch(`https://api.coinpaprika.com/v1/coins/${props.coinId}`)).json();
-      const priceData = await (await fetch(`https://api.coinpaprika.com/v1/tickers/${props.coinId}`)).json();
+      const infoData = await (await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)).json();
+      const priceData = await (await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)).json();
       setInfodata(infoData);
       setPricedata(priceData);
       setLoad(false);
@@ -59,8 +60,8 @@ export function OverviewItem(props: ICoinIdType) {
                 </Item>
               </OverviewList>
               <Switch>
-                <Route path={`/${props.coinId}/price`} component={Price} />
-                <Route path={`/${props.coinId}/chart`} component={Chart} />
+                <Route path={`/price`} component={Price} />
+                <Route path={`/chart`} component={Chart} />
               </Switch>
             </>
           )
