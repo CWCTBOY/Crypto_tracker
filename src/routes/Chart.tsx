@@ -1,6 +1,6 @@
 function Chart() {
   return (
-    <h1>chart</h1>
+    null
   )
 }
 export default Chart;

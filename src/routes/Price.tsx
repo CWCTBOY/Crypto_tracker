@@ -1,6 +1,6 @@
 function Price() {
   return (
-    <h1>price</h1>
+    null
   )
 }
 export default Price;
