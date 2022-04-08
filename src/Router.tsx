@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Wrapper, Header, Title } from './styles/Global/GlobalHeader'
-import CoinPage from "./routes/CoinPage";
-import Home from "./routes/Home";
+import CoinPage from "./pages/CoinPage";
+import Home from "./pages/Home";
 
 export default function Router() {
   return (

@@ -28,5 +28,5 @@ export const Coin = styled.div`
 `
 export const CoinImg = styled.img`
   margin: 0 12px 0 12px;
-  width: 25px;
+  width: 20px;
 `
