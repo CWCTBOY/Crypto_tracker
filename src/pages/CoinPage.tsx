@@ -8,6 +8,7 @@ export interface ICoinInfo {
   rank: number;
   is_new: boolean;
   is_active: boolean;
+  type: string;
   description: string;
   hash_algorithm: string;
 }
@@ -22,7 +23,7 @@ export default function CoinPage() {
       setCoininfo(request);
       setLoad(true);
     })();
-  }, [coinId])
+  }, [])
   return (
     <Coin coininfo={coininfo} load={load} />
   )

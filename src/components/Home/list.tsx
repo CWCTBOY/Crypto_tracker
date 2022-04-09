@@ -8,14 +8,14 @@ interface IListData {
   load: boolean;
 }
 
-function List({ coindata, load }: IListData) {
+function List(props: IListData) {
   return (
     <ListBox>
       {
-        !load
+        !props.load
           ? <Loader><LoadText>Loading...</LoadText></Loader>
           : (
-            coindata?.map(item => (
+            props.coindata?.map(item => (
               <Link to={`/${item.id}`}>
                 <Coin key={item.id}>
                   <CoinImg src={`https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${item.name.toLowerCase().split(" ").join("-")}.png`} />

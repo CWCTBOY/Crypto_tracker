@@ -73,6 +73,7 @@ export const Loader = styled.span`
 	align-items: center;
 	background-color: rgba(0,0,0,0.4);
 	animation: ${loaderKeyframes} 0.5s linear infinite;
+	margin: 50px 0 0 0;
 `
 export const LoadText = styled.span`
 		color:  ${props => props.theme.txtColor};

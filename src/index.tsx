@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
-import { darkTheme } from './theme';
+import { darkTheme, lightTheme } from './theme';
 import App from './App';
 
 ReactDOM.render(
