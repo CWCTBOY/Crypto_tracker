@@ -1,13 +1,15 @@
-import { CoinBox, InfoBox, InfoWrapper, Name, Info, CoinDescription } from "../../styles/Pages/Coinpages";
+import { CoinBox, InfoBox, InfoWrapper, Name, Info, CoinDescription, BtnWrapper, NestedBtn } from "../../styles/Pages/Coinpages";
 import { ICoinInfo } from '../../pages/CoinPage'
 import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
+import { Link, Outlet } from "react-router-dom";
 
 interface ICoin {
   coininfo?: ICoinInfo;
   load: boolean;
+  coinId?: string;
 }
 
-function Coin({ coininfo, load }: ICoin) {
+function Coin({ coininfo, load, coinId }: ICoin) {
   return (
     <CoinBox>
       <Name>{coininfo?.name}</Name>
@@ -53,8 +55,17 @@ function Coin({ coininfo, load }: ICoin) {
                   </Info>
                 </InfoBox>
               </InfoWrapper>
+              <BtnWrapper>
+                <Link to={`/${coinId}/price`}>
+                  <NestedBtn>Price</NestedBtn>
+                </Link>
+                <Link to={`/${coinId}/chart`}>
+                  <NestedBtn>Chart</NestedBtn>
+                </Link>
+              </BtnWrapper>
+              {/* outlet꾸미기 여기서부터 */}
             </>
-          )//여기서부터 시작! (중첩라우팅 구현)
+          )
       }
     </CoinBox>
   )

@@ -37,3 +37,25 @@ export const CoinDescription = styled.span`
   height: auto;
   margin: 0 0 30px 0;
 `
+export const BtnWrapper = styled.div`
+  width: 450px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+`
+export const NestedBtn = styled.div`
+  width: 220px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${props => props.theme.txtColor};
+  border: 1px solid ${props => props.theme.accentColor};
+  border-radius: 5px;
+  transition: all 0.1s linear;
+  &:hover {
+    border-bottom: 3px solid ${props => props.theme.txtColor};
+    border-top: 3px solid ${props => props.theme.txtColor};
+    color: ${props => props.theme.accentColor};
+  } // 버튼 클릭했을떄 호버스타일 유지되게 만들기
+`

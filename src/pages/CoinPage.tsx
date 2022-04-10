@@ -25,7 +25,7 @@ export default function CoinPage() {
     })();
   }, [])
   return (
-    <Coin coininfo={coininfo} load={load} />
+    <Coin coininfo={coininfo} load={load} coinId={coinId} />
   )
 }
 //https://api.coinpaprika.com/v1/coins/btc-bitcoin
