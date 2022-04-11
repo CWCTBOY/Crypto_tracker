@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { ListBox } from "../Home/CoinList";
 
 export const CoinBox = styled(ListBox)``;
@@ -43,7 +43,7 @@ export const BtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `
-export const NestedBtn = styled.div`
+export const NestedBtn = styled.button`
   width: 220px;
   height: 100%;
   display: flex;
@@ -52,10 +52,14 @@ export const NestedBtn = styled.div`
   color: ${props => props.theme.txtColor};
   border: 1px solid ${props => props.theme.accentColor};
   border-radius: 5px;
-  transition: all 0.1s linear;
+  background-color: ${props => props.theme.bgColor};
+  cursor: pointer;
+  &:focus {
+    border: 1px solid ${props => props.theme.txtColor};
+  }
+  transition: color 0.1s linear, border-color 0.1s linear;
   &:hover {
-    border-bottom: 3px solid ${props => props.theme.txtColor};
-    border-top: 3px solid ${props => props.theme.txtColor};
     color: ${props => props.theme.accentColor};
-  } // 버튼 클릭했을떄 호버스타일 유지되게 만들기
+    border-color: ${props => props.theme.txtColor};
+  }
 `

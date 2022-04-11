@@ -15,7 +15,7 @@ function Home() {
   useEffect(() => {
     (async () => {
       const request = await (await fetch('https://api.coinpaprika.com/v1/coins')).json();
-      setCoindata(request.slice(0, 80));
+      setCoindata(request.slice(0, 30));
       setLoad(true);
     })();
   }, [])

@@ -28,5 +28,3 @@ export default function CoinPage() {
     <Coin coininfo={coininfo} load={load} coinId={coinId} />
   )
 }
-//https://api.coinpaprika.com/v1/coins/btc-bitcoin
-//https://api.coinpaprika.com/v1/tickers/btc-bitcoin

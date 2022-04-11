@@ -3,7 +3,7 @@ import { ICoinInfo } from '../../pages/CoinPage'
 import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
 import { Link, Outlet } from "react-router-dom";
 
-interface ICoin {
+export interface ICoin {
   coininfo?: ICoinInfo;
   load: boolean;
   coinId?: string;
@@ -63,7 +63,7 @@ function Coin({ coininfo, load, coinId }: ICoin) {
                   <NestedBtn>Chart</NestedBtn>
                 </Link>
               </BtnWrapper>
-              {/* outlet꾸미기 여기서부터 */}
+              <Outlet />
             </>
           )
       }
