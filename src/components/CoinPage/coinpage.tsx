@@ -1,7 +1,7 @@
 import { CoinBox, InfoBox, InfoWrapper, Name, Info, CoinDescription, BtnWrapper, NestedBtn } from "../../styles/Pages/Coinpages";
 import { ICoinInfo } from '../../pages/CoinPage'
 import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useMatch } from "react-router-dom";
 
 export interface ICoin {
   coininfo?: ICoinInfo;
@@ -10,6 +10,8 @@ export interface ICoin {
 }
 
 function Coin({ coininfo, load, coinId }: ICoin) {
+  const priceMatch = useMatch('/:coinId/price');
+  const chartMatch = useMatch('/:coinId/chart')
   return (
     <CoinBox>
       <Name>{coininfo?.name}</Name>
@@ -57,10 +59,14 @@ function Coin({ coininfo, load, coinId }: ICoin) {
               </InfoWrapper>
               <BtnWrapper>
                 <Link to={`/${coinId}/price`}>
-                  <NestedBtn>Price</NestedBtn>
+                  <NestedBtn isActive={priceMatch !== null}>{/*isActive props가 true인지 false인지 체크해주는 과정*/}
+                    Price
+                  </NestedBtn>
                 </Link>
                 <Link to={`/${coinId}/chart`}>
-                  <NestedBtn>Chart</NestedBtn>
+                  <NestedBtn isActive={chartMatch !== null}>{/*isActive props가 true인지 false인지 체크해주는 과정*/}
+                    Chart
+                  </NestedBtn>
                 </Link>
               </BtnWrapper>
               <Outlet />

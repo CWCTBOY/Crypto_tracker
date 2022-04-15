@@ -26,6 +26,9 @@ export const InfoBox = styled.div`
 `
 export const Info = styled.span`
   margin: 5px 0 5px 0;
+  &:first-child {
+    font-size: 13.5px;
+  }
   &:nth-child(2) {
     color: ${props => props.theme.accentColor};
   }
@@ -43,23 +46,33 @@ export const BtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `
-export const NestedBtn = styled.button`
+interface BtnProps {
+  theme: {
+    txtColor: string;
+    bgColor: string;
+    accentColor: string;
+    btnColor: string;
+  },
+  isActive: boolean;
+}
+export const NestedBtn = styled.button<BtnProps>`
   width: 220px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${props => props.theme.txtColor};
-  border: 1px solid ${props => props.theme.accentColor};
+  color: ${props => props.isActive ? props.theme.accentColor : props.theme.txtColor};
+  border: 1px solid ${props => props.isActive ? props.theme.txtColor : props.theme.accentColor};
+  border-bottom-width: ${props => props.isActive ? '3px' : '1px'};
+  border-top-width: ${props => props.isActive ? '3px' : '1px'};
   border-radius: 5px;
   background-color: ${props => props.theme.bgColor};
   cursor: pointer;
-  &:focus {
-    border: 1px solid ${props => props.theme.txtColor};
-  }
-  transition: color 0.1s linear, border-color 0.1s linear;
+  transition: all 0.1s linear, border-color 0.1s linear;
   &:hover {
     color: ${props => props.theme.accentColor};
     border-color: ${props => props.theme.txtColor};
+    border-bottom-width: 3px;
+    border-top-width: 3px;
   }
 `
