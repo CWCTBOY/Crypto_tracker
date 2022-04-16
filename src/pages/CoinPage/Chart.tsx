@@ -16,6 +16,6 @@ function Chart() {
   return (
     <h1>chart</h1>
   )
-}//여기부터 시작, useMatch 기능 알아보기 
+}//request 인터페이스 작성하기부터 시작
 export default Chart
 //https://api.coinpaprika.com/v1/coins/btc-bitcoin

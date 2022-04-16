@@ -48,6 +48,6 @@ function Price() {
   return (
     <h1>price</h1>
   )
-}
+}// 인터페이스 작성완료, 데이터 바인딩 하고 UI만들기
 export default Price
 //https://api.coinpaprika.com/v1/tickers/btc-bitcoin
