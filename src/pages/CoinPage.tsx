@@ -1,21 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import Coin from '../components/CoinPage/coinpage'
+import { ICoinInfoType } from "../type";
 
-export interface ICoinInfo {
-  name: string;
-  symbol: string;
-  rank: number;
-  is_new: boolean;
-  is_active: boolean;
-  type: string;
-  description: string;
-  hash_algorithm: string;
-}
+
 
 export default function CoinPage() {
   const { coinId } = useParams();
-  const [coininfo, setCoininfo] = useState<ICoinInfo>();
+  const [coininfo, setCoininfo] = useState<ICoinInfoType>();
   const [load, setLoad] = useState(false);
   useEffect(() => {
     (async () => {

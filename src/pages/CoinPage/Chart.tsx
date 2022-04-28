@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react"
+import { useQuery } from "react-query";
 import { useParams } from 'react-router-dom';
+import { chartFetcher } from "../../api";
+import { IChartInfoType } from "../../type";
 
-interface IChartInfo {
-
-}
 
 function Chart() {
   const { coinId } = useParams();
-  const [chartinfo, setChartinfo] = useState();
-  useEffect(() => {
-    (async () => {
-      const request = await (await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)).json()
-    })()
-  }, [])
+  const { isLoading, data } = useQuery<IChartInfoType[]>(['chart', coinId], () => chartFetcher(coinId!))
   return (
     <h1>chart</h1>
   )
-}//request 인터페이스 작성하기부터 시작
+}
 export default Chart
 //https://api.coinpaprika.com/v1/coins/btc-bitcoin

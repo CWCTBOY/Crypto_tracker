@@ -1,27 +1,12 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { coinFetcher } from "../api";
 import List from "../components/Home/list";
-
-export interface ICoinData {
-  id: string;
-  name: string;
-  symbol: string;
-  rank: number;
-  description: string;
-}
+import { ICoinType } from "../type";
 
 function Home() {
-  const [load, setLoad] = useState(false);
-  const [coindata, setCoindata] = useState<ICoinData[]>();
-  useEffect(() => {
-    (async () => {
-      const request = await (await fetch('https://api.coinpaprika.com/v1/coins')).json();
-      setCoindata(request.slice(0, 30));
-      setLoad(true);
-    })();
-  }, [])
+  const { isLoading, data } = useQuery<ICoinType[]>('coinData', coinFetcher);
   return (
-    <List coindata={coindata} load={load} />
+    <List coindata={data} isLoading={isLoading} />
   )
 }
 export default Home;
-//https://api.coinpaprika.com/v1/coins/btc-bitcoin

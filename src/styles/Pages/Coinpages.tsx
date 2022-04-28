@@ -46,16 +46,7 @@ export const BtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `
-interface BtnProps {
-  theme: {
-    txtColor: string;
-    bgColor: string;
-    accentColor: string;
-    btnColor: string;
-  },
-  isActive: boolean;
-}
-export const NestedBtn = styled.button<BtnProps>`
+export const NestedBtn = styled.button<{ isActive: boolean; }>`
   width: 220px;
   height: 100%;
   display: flex;

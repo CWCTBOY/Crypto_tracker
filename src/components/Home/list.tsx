@@ -1,21 +1,16 @@
-import { ICoinData } from "../../pages/Home";
 import { Link } from "react-router-dom";
 import { Coin, ListBox, CoinImg } from "../../styles/Home/CoinList";
 import { Loader, LoadText } from '../../styles/Global/GlobalLayout';
+import { IListType } from "../../type";
 
-interface IListData {
-  coindata?: ICoinData[];
-  load: boolean;
-}
-
-function List(props: IListData) {
+function List({ coindata, isLoading }: IListType) {
   return (
     <ListBox>
       {
-        !props.load
+        isLoading
           ? <Loader><LoadText>Loading...</LoadText></Loader>
           : (
-            props.coindata?.map(item => (
+            coindata?.map(item => (
               <Link to={`/${item.id}`}>
                 <Coin key={item.id}>
                   <CoinImg src={`https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/master/16/${item.name.toLowerCase().split(" ").join("-")}.png`} />

@@ -1,13 +1,7 @@
 import { CoinBox, InfoBox, InfoWrapper, Name, Info, CoinDescription, BtnWrapper, NestedBtn } from "../../styles/Pages/Coinpages";
-import { ICoinInfo } from '../../pages/CoinPage'
+import { ICoin } from "../../type";
 import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
 import { Link, Outlet, useMatch } from "react-router-dom";
-
-export interface ICoin {
-  coininfo?: ICoinInfo;
-  load: boolean;
-  coinId?: string;
-}
 
 function Coin({ coininfo, load, coinId }: ICoin) {
   const priceMatch = useMatch('/:coinId/price');
