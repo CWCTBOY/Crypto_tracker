@@ -1,15 +1,18 @@
-import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
-import { priceFetcher } from "../../api";
-import { IPriceInfoType } from "../../type";
-
-
+import { useProps } from "../../components/CoinPage/coinpage";
+import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
 
 function Price() {
-  const { coinId } = useParams();
-  const { isLoading, data } = useQuery<IPriceInfoType[]>(['price', coinId], () => priceFetcher(coinId!))
+  const { priceLoad, priceData } = useProps();
   return (
-    <h1>price</h1>
+    <>
+      {
+        priceLoad
+          ? <Loader><LoadText>Loading...</LoadText></Loader>
+          : (
+            null
+          )
+      }
+    </>
   )
 }// 인터페이스 작성완료, 데이터 바인딩 하고 UI만들기
 export default Price

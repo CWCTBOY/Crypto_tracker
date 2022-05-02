@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { coinFetcher } from "../api";
 import List from "../components/Home/list";
-import { ICoinType } from "../type";
+import { ICoinType } from "../interfaces/type";
 
 function Home() {
   const { isLoading, data } = useQuery<ICoinType[]>('coinData', coinFetcher);

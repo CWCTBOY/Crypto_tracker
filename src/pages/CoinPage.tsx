@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import Coin from '../components/CoinPage/coinpage'
-import { ICoinInfoType } from "../type";
+import { ICoinInfoType } from "../interfaces/type";
 
 
 
-export default function CoinPage() {
+function CoinPage() {
   const { coinId } = useParams();
   const [coininfo, setCoininfo] = useState<ICoinInfoType>();
   const [load, setLoad] = useState(false);
@@ -20,3 +20,4 @@ export default function CoinPage() {
     <Coin coininfo={coininfo} load={load} coinId={coinId} />
   )
 }
+export default CoinPage;

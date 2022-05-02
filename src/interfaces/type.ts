@@ -72,3 +72,9 @@ export interface IChartInfoType {
     ico_counter: number;
   }[]
 }
+export interface IOutletProps {
+  priceLoad?: boolean;
+  priceData?: IPriceInfoType;
+  chartLoad?: boolean;
+  chartData?: IChartInfoType;
+}

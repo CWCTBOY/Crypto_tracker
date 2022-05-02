@@ -1,15 +1,19 @@
-import { useQuery } from "react-query";
-import { useParams } from 'react-router-dom';
-import { chartFetcher } from "../../api";
-import { IChartInfoType } from "../../type";
-
+import { useProps } from "../../components/CoinPage/coinpage";
+import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
 
 function Chart() {
-  const { coinId } = useParams();
-  const { isLoading, data } = useQuery<IChartInfoType[]>(['chart', coinId], () => chartFetcher(coinId!))
+  const { chartLoad, chartData } = useProps();
   return (
-    <h1>chart</h1>
+    <>
+      {
+        chartLoad
+          ? <Loader><LoadText>Loading...</LoadText></Loader>
+          : (
+            null
+          )
+      }
+    </>
   )
 }
-export default Chart
+export default Chart;
 //https://api.coinpaprika.com/v1/coins/btc-bitcoin

@@ -1,16 +1,12 @@
-const BASE_URL = 'https://api.coinpaprika.com/v1'
+const BASE_URL = 'https://api.coinpaprika.com/v1';
 export const coinFetcher = async () => {
   const json = await (await fetch(`${BASE_URL}/coins`)).json();
   const data = json.slice(0, 30);
   return data
-}//Home.tsx
+};//Home.tsx
 export const priceFetcher = async (coinId: string) => {
-  const json = await (await fetch(`${BASE_URL}/coins/${coinId}`)).json();
-  const data = json.slice(0, 30);
-  return data
-}//Price.tsx
+  return await (await fetch(`${BASE_URL}/tickers/${coinId}`)).json();
+};//Price.tsx
 export const chartFetcher = async (coinId: string) => {
-  const json = await (await fetch(`${BASE_URL}/trickers/${coinId}`)).json();
-  const data = json.slice(0, 30);
-  return data
-}//Chart.tsx
+  return await (await fetch(`${BASE_URL}/coins/${coinId}/ohlcv/historical`)).json();
+};//Chart.tsx
