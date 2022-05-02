@@ -76,6 +76,6 @@ function Coin({ coininfo, load, coinId }: ICoin) {
   )
 }
 export function useProps() {
-  return useOutletContext<IOutletProps>();
+  return useOutletContext<IOutletProps>();//outlet으로 전송해준 props를 쓸수 있게 만듬.
 }
 export default Coin;

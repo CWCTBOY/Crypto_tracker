@@ -2,7 +2,7 @@ import { useProps } from "../../components/CoinPage/coinpage";
 import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
 
 function Chart() {
-  const { chartLoad, chartData } = useProps();
+  const { chartLoad, chartData } = useProps();//custom hook
   return (
     <>
       {

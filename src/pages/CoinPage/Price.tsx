@@ -2,7 +2,7 @@ import { useProps } from "../../components/CoinPage/coinpage";
 import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
 
 function Price() {
-  const { priceLoad, priceData } = useProps();
+  const { priceLoad, priceData } = useProps();//custom hook
   return (
     <>
       {

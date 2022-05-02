@@ -6,7 +6,7 @@ export const coinFetcher = async () => {
 };//Home.tsx
 export const priceFetcher = async (coinId: string) => {
   return await (await fetch(`${BASE_URL}/tickers/${coinId}`)).json();
-};//Price.tsx
+};//Price.tsx ==> 여기 링크 손좀 봐야댐
 export const chartFetcher = async (coinId: string) => {
   return await (await fetch(`${BASE_URL}/coins/${coinId}/ohlcv/historical`)).json();
-};//Chart.tsx
+};//Chart.tsx ==> 여기 링크 손좀 봐야댐
