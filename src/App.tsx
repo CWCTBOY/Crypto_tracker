@@ -1,5 +1,5 @@
 import Router from "./Router";
-import { GlobalLayout } from "./styles/Global/GlobalLayout";
+import { GlobalLayout } from "./styles/Global/globalLayout";
 import { ReactQueryDevtools } from 'react-query/devtools';
 function App() {
   return (

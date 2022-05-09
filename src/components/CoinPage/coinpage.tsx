@@ -1,6 +1,6 @@
-import { CoinBox, InfoBox, InfoWrapper, Name, Info, CoinDescription, BtnWrapper, NestedBtn } from "../../styles/Pages/Coinpages";
+import { CoinBox, InfoBox, InfoWrapper, Name, Info, CoinDescription, BtnWrapper, NestedBtn } from "../../styles/Pages/coinPage";
 import { ICoin, IOutletProps } from "../../interfaces/type";
-import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
+import { Loader, LoadText } from "../../styles/Global/globalLayout";
 import { Link, Outlet, useOutletContext, useMatch } from "react-router-dom";
 import { useQuery } from "react-query";
 import { priceFetcher, chartFetcher } from "../../api";
@@ -10,7 +10,7 @@ function Coin({ coininfo, load, coinId }: ICoin) {
   const priceMatch = useMatch('/:coinId/price');
   const chartMatch = useMatch('/:coinId/chart');
   const { isLoading: priceLoad, data: priceData } = useQuery<IPriceInfoType>(['ticker', coinId], () => priceFetcher(coinId!))
-  const { isLoading: chartLoad, data: chartData } = useQuery<IChartInfoType>(['chart', coinId], () => chartFetcher(coinId!))
+  const { isLoading: chartLoad, data: chartData } = useQuery<IChartInfoType[]>(['chart', coinId], () => chartFetcher(coinId!))
   return (
     <CoinBox>
       <Name>{coininfo?.name}</Name>
@@ -50,7 +50,7 @@ function Coin({ coininfo, load, coinId }: ICoin) {
                   <Info>
                     {
                       coininfo!.hash_algorithm.length > 10
-                        ? `${coininfo?.hash_algorithm.slice(0, 10)}..`
+                        ? `${coininfo?.hash_algorithm.slice(0, 10)}...`
                         : coininfo?.hash_algorithm
                     }
                   </Info>

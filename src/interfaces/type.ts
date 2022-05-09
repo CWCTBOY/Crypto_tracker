@@ -56,25 +56,20 @@ export interface IPriceInfoType {
       percent_from_price_ath: number;
     }
   };
-}
+}// 잠시 보류
 export interface IChartInfoType {
-  id: string;
-  name: string;
-  symbol: string;
-  rank: number;
-  is_new: boolean;
-  is_active: boolean;
-  type: string;
-  tags: {
-    id: string;
-    name: string;
-    coin_counter: number;
-    ico_counter: number;
-  }[]
+  time_open: string;
+  time_close: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+  market_cap: number;
 }
 export interface IOutletProps {
   priceLoad?: boolean;
   priceData?: IPriceInfoType;
   chartLoad?: boolean;
-  chartData?: IChartInfoType;
+  chartData?: IChartInfoType[];
 }

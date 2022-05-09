@@ -1,8 +1,9 @@
-import { useProps } from "../../components/CoinPage/coinpage";
-import { Loader, LoadText } from "../../styles/Global/GlobalLayout";
+import { useProps } from "../../components/CoinPage/CoinPage";
+import { Loader, LoadText } from "../../styles/Global/globalLayout";
 
 function Price() {
-  const { priceLoad, priceData } = useProps();//custom hook
+  const { priceLoad, priceData } = useProps();
+  console.log(priceData);
   return (
     <>
       {
@@ -14,6 +15,6 @@ function Price() {
       }
     </>
   )
-}// 인터페이스 작성완료, 데이터 바인딩 하고 UI만들기
+}
 export default Price
 //https://api.coinpaprika.com/v1/tickers/btc-bitcoin

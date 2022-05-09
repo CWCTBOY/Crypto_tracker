@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { coinFetcher } from "../api";
-import List from "../components/Home/list";
+import List from "../components/Home/List";
 import { ICoinType } from "../interfaces/type";
 
 function Home() {

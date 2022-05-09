@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { Wrapper, Header, Title } from './styles/Global/GlobalHeader'
+import { Wrapper, Header, Title } from "./styles/Global/globalHeader";
 import Home from "./pages/Home";
 import CoinPage from "./pages/CoinPage";
 import Chart from "./pages/CoinPage/Chart";

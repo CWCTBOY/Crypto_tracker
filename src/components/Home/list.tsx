@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Coin, ListBox, CoinImg } from "../../styles/Home/CoinList";
-import { Loader, LoadText } from '../../styles/Global/GlobalLayout';
+import { Coin, ListBox, CoinImg } from "../../styles/Home/coinList";
+import { Loader, LoadText } from '../../styles/Global/globalLayout';
 import { IListType } from "../../interfaces/type";
 
 function List({ coindata, isLoading }: IListType) {
