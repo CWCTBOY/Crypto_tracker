@@ -1,4 +1,14 @@
-import { CoinBox, InfoBox, InfoWrapper, Name, Info, CoinDescription, BtnWrapper, NestedBtn } from "../../styles/Pages/coinPage";
+import {
+  CoinBox,
+  InfoBox,
+  InfoWrapper,
+  Name,
+  Info,
+  CoinDescription,
+  BtnWrapper,
+  NestedBtn,
+  ChartBox
+} from "../../styles/Pages/coinPage";
 import { ICoin, IOutletProps } from "../../interfaces/type";
 import { Loader, LoadText } from "../../styles/Global/globalLayout";
 import { Link, Outlet, useOutletContext, useMatch } from "react-router-dom";
@@ -68,7 +78,9 @@ function Coin({ coininfo, load, coinId }: ICoin) {
                   </NestedBtn>
                 </Link>
               </BtnWrapper>
-              <Outlet context={{ priceLoad, priceData, chartLoad, chartData }} />
+              <ChartBox>
+                <Outlet context={{ priceLoad, priceData, chartLoad, chartData }} />
+              </ChartBox>
             </>
           )
       }

@@ -66,3 +66,8 @@ export const NestedBtn = styled.button<{ isActive: boolean; }>`
     border-top-width: 3px;
   }
 `
+export const ChartBox = styled.div`
+  width: 450px;
+  height: auto;
+  margin: 20px 0 0 0;
+`
