@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom"
 import Coin from '../components/CoinPage/CoinPage'
 import { ICoinInfoType } from "../interfaces/type";
 
-
-
 function CoinPage() {
   const { coinId } = useParams();
   const [coininfo, setCoininfo] = useState<ICoinInfoType>();

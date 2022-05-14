@@ -13,13 +13,12 @@ import { ICoin, IOutletProps } from "../../interfaces/type";
 import { Loader, LoadText } from "../../styles/Global/globalLayout";
 import { Link, Outlet, useOutletContext, useMatch } from "react-router-dom";
 import { useQuery } from "react-query";
-import { priceFetcher, chartFetcher } from "../../api";
-import { IPriceInfoType, IChartInfoType } from "../../interfaces/type";
+import { chartFetcher } from "../../api";
+import { IChartInfoType } from "../../interfaces/type";
 
 function Coin({ coininfo, load, coinId }: ICoin) {
   const priceMatch = useMatch('/:coinId/price');
   const chartMatch = useMatch('/:coinId/chart');
-  const { isLoading: priceLoad, data: priceData } = useQuery<IPriceInfoType>(['ticker', coinId], () => priceFetcher(coinId!))
   const { isLoading: chartLoad, data: chartData } = useQuery<IChartInfoType[]>(['chart', coinId], () => chartFetcher(coinId!))
   return (
     <CoinBox>
@@ -79,7 +78,7 @@ function Coin({ coininfo, load, coinId }: ICoin) {
                 </Link>
               </BtnWrapper>
               <ChartBox>
-                <Outlet context={{ priceLoad, priceData, chartLoad, chartData }} />
+                <Outlet context={{ chartLoad, chartData }} />
               </ChartBox>
             </>
           )

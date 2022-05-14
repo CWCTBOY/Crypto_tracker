@@ -56,7 +56,7 @@ export interface IPriceInfoType {
       percent_from_price_ath: number;
     }
   };
-}// 잠시 보류
+}
 export interface IChartInfoType {
   time_open: string;
   time_close: string;
@@ -65,11 +65,8 @@ export interface IChartInfoType {
   low: number;
   close: number;
   volume: number;
-  market_cap: number;
 }
 export interface IOutletProps {
-  priceLoad?: boolean;
-  priceData?: IPriceInfoType;
   chartLoad?: boolean;
   chartData?: IChartInfoType[];
 }

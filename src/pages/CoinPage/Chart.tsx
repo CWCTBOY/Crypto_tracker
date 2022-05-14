@@ -2,38 +2,22 @@ import { useProps } from "../../components/CoinPage/CoinPage";
 import ReactApexCharts from "react-apexcharts";
 import { Loader, LoadText } from "../../styles/Global/globalLayout";
 
-interface IData {
-  x: string | null;
-  y: string | null;
-}
 const date = new Date().getDate();
 const month = new Date().getMonth();
 const calendar = (i: number) => {
   if (date - i < 0) {
-    return (month - 1);
-  } else {
     return month;
+  } else {
+    return month + 1;
   }
 }
+
 function Chart() {
   const { chartLoad, chartData } = useProps();
-  let highData: IData[] = [];
-  let lowData: IData[] = [];
-  let highest: IData = { x: '', y: '' };
-  let lowest: IData = { x: '', y: '' };
+  let dateData: string[] = [];
   for (let i = 0; i < chartData!.length; i++) {
-    highest.x = `${calendar(i) + 1} / ${date - chartData!.length + i + 1}`;
-    highest.y = `${chartData![i].high}`;
-    highData.push(highest);
-    highest = { x: '', y: '' };
+    dateData.push(`${calendar(i)} / ${date - 9 + i}`)
   }
-  for (let i = 0; i < chartData!.length; i++) {
-    lowest.x = `${calendar(i) + 1} / ${date - chartData!.length + i + 1}`;
-    lowest.y = `${chartData![i].low}`;
-    lowData.push(lowest);
-    lowest = { x: '', y: '' };
-  }
-  console.log(highData, lowData, date);
   return (
     <>
       {
@@ -44,11 +28,11 @@ function Chart() {
             series={[
               {
                 name: 'highest',
-                data: highData
+                data: chartData?.map(item => item.high) as number[],
               },
               {
                 name: 'lowest',
-                data: lowData
+                data: chartData?.map(item => item.low) as number[],
               }
             ]}
             options={{
@@ -65,8 +49,18 @@ function Chart() {
                   }
                 }
               },
+              xaxis: {
+                axisTicks: { show: false },
+                axisBorder: { show: false },
+                categories: chartData?.map(item => item.time_open)
+              },
               yaxis: {
                 show: false
+              },
+              tooltip: {
+                y: {
+                  formatter: (value) => `$ ${value.toFixed(3)}`
+                }
               },
               theme: {
                 mode: 'dark',
@@ -75,7 +69,10 @@ function Chart() {
               chart: {
                 width: 'inherit',
                 height: 'inherit',
-                background: 'inherit'
+                background: 'inherit',
+                toolbar: {
+                  show: false
+                }
               },
               dataLabels: {
                 enabled: false,
