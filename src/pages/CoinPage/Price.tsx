@@ -5,8 +5,11 @@ import { IChartInfoType } from "../../interfaces/type";
 
 function Price() {
   const { chartLoad, chartData } = useProps();
+  const form = (value: number): number => {
+    return parseFloat(value.toFixed(3));
+  }
   const ohlc = (data: IChartInfoType) => {
-    return [new Date(data.time_open).getTime(), data.open, data.high, data.low, data.close];
+    return [new Date(data.time_open).getTime(), [form(data.open), form(data.high), form(data.low), form(data.close)]];
   }
   return (
     <>
@@ -37,10 +40,18 @@ function Price() {
               xaxis: {
                 axisTicks: { show: false },
                 axisBorder: { show: false },
-                categories: chartData?.map(item => item.time_open)// 동작안함. 수정해야함
+                labels: {
+                  formatter: (value) => `${new Date(value)}`,
+                  show: false
+                }
               },
               yaxis: {
                 show: false
+              },
+              tooltip: {
+                y: {
+                  formatter: (value) => `$ ${value.toFixed(3)}`
+                }
               },
               theme: {
                 mode: 'dark',
@@ -63,11 +74,6 @@ function Price() {
                     upward: '#0F9895',
                     downward: '#DCDDE1'
                   }
-                }
-              },
-              tooltip: {
-                y: {
-                  // formatter: (value) => `$ ${value.toFixed(3)}` => 수정해야함 동작 안함
                 }
               },
             }}

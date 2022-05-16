@@ -52,7 +52,9 @@ function Chart() {
               xaxis: {
                 axisTicks: { show: false },
                 axisBorder: { show: false },
-                categories: chartData?.map(item => item.time_open)
+                labels: { show: false },
+                categories: chartData?.map(item => item.time_open),
+                type: 'datetime'
               },
               yaxis: {
                 show: false

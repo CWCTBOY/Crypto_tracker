@@ -6,7 +6,7 @@ export const coinFetcher = async () => {
 };//Home.tsx
 export const chartFetcher = async (coinId: string) => {
   const endDate = Math.floor(Date.now() / 1000);
-  const startDate = endDate - (60 * 60 * 24 * 25);
+  const startDate = endDate - (60 * 60 * 24 * 60);
   const data = await (await fetch(`${BASE_URL}/coins/${coinId}/ohlcv/historical?start=${startDate}&end=${endDate}`)).json();
   console.log(data);
   return data;
