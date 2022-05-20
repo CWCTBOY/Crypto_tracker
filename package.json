@@ -49,10 +49,10 @@
       "last 1 safari version"
     ]
   },
+  "hompage": "https://CWCTBOY.github.io/Crypto_tracker",
   "devDependencies": {
     "@types/react-helmet": "^6.1.5",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.24"
-  },
-  "hompages": "https://CWCTBOY.github.io/Crypto_tracker"
+  }
 }

@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Wrapper, Header, Title } from "./styles/Global/globalHeader";
 import Home from "./pages/Home";
 import CoinPage from "./pages/CoinPage";
@@ -7,7 +7,7 @@ import Price from "./pages/CoinPage/Price";
 
 export default function Router() {
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Wrapper>
         <Header>
           <Link to='/'>
@@ -22,6 +22,6 @@ export default function Router() {
           <Route path="/:coinId/chart" element={<Chart />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
