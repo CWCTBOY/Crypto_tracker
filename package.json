@@ -25,6 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "postbuild": "cp build/index.html build/404.html",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -49,10 +50,10 @@
       "last 1 safari version"
     ]
   },
-  "hompage": "https://CWCTBOY.github.io/Crypto_tracker",
   "devDependencies": {
     "@types/react-helmet": "^6.1.5",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.24"
-  }
+  },
+  "hompage": "https://CWCTBOY.github.io/Crypto_tracker"
 }
