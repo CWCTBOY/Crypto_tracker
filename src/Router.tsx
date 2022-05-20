@@ -7,7 +7,7 @@ import Price from "./pages/CoinPage/Price";
 
 export default function Router() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Wrapper>
         <Header>
           <Link to='/'>
